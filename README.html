@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!DOCTYPE html>
+<title></title>
+<style type="text/css">
+
+table {
+    border-spacing: 0px;
+}
+
+.sol-block {
+  margin-left:-20px;
+  padding-left:20px;
+  border-left:dotted darkgreen 2px;
+  margin-top:20px;
+  margin-bottom:20px;
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+.sol-qualifier {
+  color: steelblue;
+  padding-right:5px;
+}
+
+.sol-datacell {
+}
+
+.sol-assign {
+  padding: 0;
+  padding-right:3px;
+  padding-left:3px;
+  text-align: center;
+  border-left: none;
+}
+
+.sol-expr {
+  vertical-align: middle;
+  padding-right:20px;
+}
+
+#sol-if-div {
+  min-height: 40px;
+}
+
+div#sol-if-div > svg {
+  position: relative;
+  z-index; -1;
+}
+
+div#sol-if-div > table {
+  position: relative;
+  z-index: +1;
+}
+
+
+td.sol-if-condition {
+  padding: .5em;
+  padding-left: 25px;
+}
+
+.sol-if-operator {
+  vertical-align: middle;
+  padding: 10px 14px 10px 14px;
+}
+
+div#sol-andor-operation > svg {
+  position: relative;
+  z-index: -1;
+}
+
+div#sol-andor-operation > table {
+  position: relative;
+  z-index: 1;
+}
+
+.sol-andor-operator {
+  vertical-align: middle;
+  padding: 3px 5px 5px 7px;
+  border:1px;
+  border-color: black;
+  border-style:solid;
+  border-radius:25px 0px 0px 25px;
+}
+
+.sol-or-operator {
+  border-right:0px;
+}
+
+td.sol-andor-condition {
+  padding: .5em;
+  padding-left: 25px;
+}
+
+div.sol-andor-end {
+    border:3px;
+    border-color: black;
+    border-style:solid;
+    border-radius:25px;
+    margin-left:14px;
+}
+
+.sol-operator {
+    color: dodgerblue;
+}
+
+.sol-number {
+  color: green;
+}
+
+.sol-string-literal {
+  color: green;
+}
+
+.sol-sub-expr {
+  border-radius: 5px;
+  border-bottom: 1px;
+  border-top: 1px;
+  border-left: 1px;
+  border-right: 1px;
+  border-color: lightblue;
+  border-style:solid;
+  padding-left:1px;
+  padding-right:1px;
+  position:relative;
+}
+
+.hovering {
+  border-style: dashed;
+  border-color: black;
+}
+
+
+.sol-divide-top {
+  text-align: center;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.sol-divide-bottom {
+  border: 0px;
+  border-top: 1.5px;
+  border-color: black;
+  border-style: solid;
+  text-align: center;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+td.sol-divide-top > table {
+  display: inline;
+}
+
+td.sol-divide-bottom > table {
+  display: inline;
+}
+
+.sol-then-space {
+    min-width: 20px;
+}
+
+.sol-comment {  
+  font-size: 8pt;
+  font-style: italic;
+  color: grey;
+  border-bottom: none;
+  padding-left:30px;
+}
+
+body {
+ font-size: 12px;
+ font-family: helvetica;
+ line-height:1.3;
+ margin-top:6.0pt;
+ margin-right:1cm;
+ margin-bottom:12.0pt;
+ margin-left:1cm;
+}
+
+h1 {
+ font-size:16.0pt;
+ page-break-before:always;
+ color:#293639;
+ margin-top: 40pt;
+ margin-right:-2.0cm;
+ margin-bottom:12.0pt;
+ line-height:150%;
+ text-transform:uppercase;
+ border-bottom: 3px solid #85d764;
+}
+
+h2 {
+ margin-top:24.0pt;
+ margin-right:0cm;
+ margin-bottom:12.0pt;
+ margin-left:35.45pt;
+ text-indent:-35.45pt;
+ page-break-after:avoid;
+ font-size:16.0pt;
+ font-weight:bold;
+}
+
+h3 {
+ margin-top:18.0pt;
+ margin-right:0cm;
+ margin-bottom:12.0pt;
+ margin-left:36.0pt;
+ text-indent:-36.0pt;
+ page-break-after:avoid;
+ font-size:14.0pt;
+ font-weight:normal;
+}
+
+h4 {
+ margin-top:2.0pt;
+ margin-right:0cm;
+ margin-bottom:0cm;
+ margin-left:43.2pt;
+ text-indent:-43.2pt;
+ page-break-after:avoid;
+ font-size:12.0pt;
+ font-weight:200;
+ font-style:italic;
+}
+
+h5 {
+ margin-top:2.0pt;
+ margin-right:0cm;
+ margin-bottom:0cm;
+ margin-left:50.4pt;
+ text-indent:-50.4pt;
+ page-break-after:avoid;
+ font-size:12.0pt;
+ font-weight:normal;
+}
+
+h6 {
+ margin-top:2.0pt;
+ margin-right:0cm;
+ margin-bottom:0cm;
+ margin-left:50.4pt;
+ text-indent:-50.4pt;
+ page-break-after:avoid;
+ font-size:12.0pt;
+ font-weight:100;
+}
+
+p.toc_h1 {
+ margin-top:6.0pt;
+ margin-right:0cm;
+ margin-bottom:6.0pt;
+ margin-left:0cm;
+ color:#24292E;
+ text-transform:uppercase;
+}
+
+p.toc_h1 a:link {
+ color: #24292E;
+ text-decoration: none;
+}
+
+p.toc_h1 a:visited {
+ color: #24292E;
+ text-decoration: none;
+}
+
+p.toc_h2 {
+ margin-top:0cm;
+ margin-right:0cm;
+ margin-bottom:0cm;
+ margin-left:12.0pt;
+ color:#24292E;
+}
+
+p.toc_h2 a:link {
+ color: #24292E;
+ text-decoration: none;
+}
+
+p.toc_h2 a:visited {
+ color: #24292E;
+ text-decoration: none;
+}
+
+p.toc_h3 {
+ margin-top:0cm;
+ margin-right:0cm;
+ margin-bottom:0cm;
+ margin-left:24.0pt;
+ color:#24292E;
+}
+
+p.toc_h3 a:link {
+ color: #24292E;
+ text-decoration: none;
+}
+
+p.toc_h3 a:visited {
+ color: #24292E;
+ text-decoration: none;
+}
+
+p.toc_h4 {
+ margin-top:0cm;
+ margin-right:0cm;
+ margin-bottom:0cm;
+ margin-left:36.0pt;
+ color:#24292E;
+}
+
+p.toc_h4 a:link {
+ color: #24292E;
+ text-decoration: none;
+}
+
+p.toc_h4 a:visited {
+ color: #24292E;
+ text-decoration: none;
+}
+
+p.toc_h5 {
+ margin-top:0cm;
+ margin-right:0cm;
+ margin-bottom:0cm;
+ margin-left:48.0pt;
+ color:#24292E;
+}
+
+p.toc_h5 a:link {
+ color: #24292E;
+ text-decoration: none;
+}
+
+p.toc_h5 a:visited {
+ color: #24292E;
+ text-decoration: none;
+}
+
+/* Tooltip */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+blockquote {
+ margin: 10px;
+ padding: 10px;
+ border-left: 4px solid #707171;
+ border-top-left-radius: 30px;
+ border-bottom-left-radius: 30px;
+ border-top: 2px solid #707171;
+ background: rgba(163, 222, 45, 0.05);
+}
+
+#docHeaderTitle {
+    background:#293639;
+    padding-top: 150px;
+    padding-bottom: 10px;
+    padding-left:1cm;
+    padding-right: 20px;
+    margin-left:-1cm;
+    margin-top:-10px;
+    margin-bottom:0px;
+    width:105%;
+    border-top:none;
+    border-bottom:3px solid;
+    border-bottom-color: #96ed73;
+    color:white;
+    line-height:1.2;
+    text-align:left;
+    font-size:5em;
+    font-family:"Tahoma";
+}
+
+#docHeaderProject {
+    background:#293639;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    padding-left:1cm;
+    padding-right: 20px;
+    margin-left:-1cm;
+    margin-top:0px;
+    margin-bottom:0px;
+    width:105%;
+    border-top:none;
+    border-bottom:3px solid;
+    border-bottom-color: #96ed73;
+    color:white;
+    line-height:1.2;
+    text-align:left;
+    font-size:3em;
+    font-family:"Tahoma";
+}
+
+#docHeaderVersion{
+    background:#293639;
+    padding-top: 50px;
+    padding-bottom: 70px;
+    padding-left:1cm;
+    padding-right: 20px;
+    margin-left:-1cm;
+    margin-top:0px;
+    margin-bottom:0px;
+    width:105%;
+    border:none;
+    color:white;
+    line-height:1.2;
+    text-align:left;
+    font-size:1.5em;
+    font-weight:500;
+}
+
+/* DocInfo */
+
+table.docinfo {
+    padding-top: 40px;
+    padding-bottom: 50px;
+    margin-top:0px;
+    margin-bottom:10px;
+    /*margin-left:2cm;*/
+    border:none;
+}
+
+table.docinfo thead {
+  font-weight: normal;
+  background-color: transparent;
+}
+
+table.docinfo td {
+  vertical-align: top;
+  border-collapse: collapse;
+  border: none;
+  font-size:12px;
+  line-height:1.5;
+}
+
+/* Text tables */
+
+table.soltext {
+  border: none;
+  border-spacing: 0;
+}
+
+.withoutcaption {
+  padding-top: 6px;
+  padding-bottom: 24px;
+}
+
+table.soltext thead {
+  vertical-align: bottom;
+  font-weight: bold;
+  background-color: white;
+}
+
+table.soltext td {
+  vertical-align:center;
+  border-collapse: collapse;
+  border-top: none;
+  border-left: none;
+  border-bottom: solid #70AD47 1.0pt;
+  border-right: solid #A8D08D 1.0pt;
+  padding: 0 4pt 0 4pt;
+}
+
+table.soltext td p {
+  margin-top:6px;
+  margin-bottom:6px;
+}
+
+table.soltext tbody tr:nth-child(odd) {
+  background-color: #E2EFD9;
+}
+
+table.soltext td.whitecolumn {
+  background-color: white;
+}
+
+table.soltext td:last-child {
+  border-right: 0;
+}
+
+table caption {
+  float: center;
+  text-align: center;
+  font-style: italic;
+  font-size: 11px;
+  text-indent: 0;
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+li.checkbox {
+  list-style-type:none;
+  margin-left:-20px;
+}
+
+figure {
+  float: center;
+  text-align: center;
+  font-style: italic;
+  font-size: 11px;
+  text-indent: 0;
+  margin: 0.5em;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+table.sol-template-header {
+  margin: 0;    
+  border-left: none;
+  border-spacing: 0 0;
+}
+
+.sol-template-name {
+  font-size: 13px; 
+  background: white;
+  padding: 4px 20px 4px 20px;
+  color: darkslategrey;
+  border: solid black 1px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.sol-template-is {
+  font-size: 10px;
+  color:steelblue;
+  border: none;
+  margin: 0;
+  padding-left:10px;
+  vertical-align: middle;
+}
+
+table.sol-state-definition {
+  margin: 0;    
+  border-left: none;
+  border-spacing: 0 0;
+}
+
+.sol-vertical-space {
+  padding-top:12px;
+  min-height: 20px;
+}
+
+.sol-list {
+  
+}
+
+
+/* OLD */
+
+/* Sol Template Table */
+
+.sol-template__section {
+  margin: 0;
+  border-left: 1px solid black;
+  padding-left: 10px;
+  padding-top:10px;
+  border-spacing: 0 0;
+}
+
+/* Sol Datacell Table */
+
+.sol-dc__qual--in {
+  border-bottom: solid gainsboro 1.0pt;
+  border-right: none;
+  font-weight: bold;
+}
+
+.sol-dc__qual--out {
+  border-bottom: solid gainsboro 1.0pt;
+  border-right: none;
+  font-weight: bold;
+}
+
+.sol-dc__qual--error {
+  border-bottom: solid gainsboro 1.0pt;
+  border-right: none;
+  border-left: 5px solid red;
+}
+
+.sol-dc__name--pc {
+  border-bottom: solid gainsboro 1.0pt;
+  border-right: none;
+  font-style: italic;
+  color: cornflowerblue;
+}
+
+.sol-dc__name--p {
+  border-bottom: solid gainsboro 1.0pt;
+  border-right: none;
+  font-style: italic;
+  color: blueviolet;
+}
+
+.sol-dc-list {
+  margin-top:0px;
+}
+
+
+/* Sol Table */
+
+table.sol-table {
+  margin-top:5px;
+  margin-left:25px;
+  border-collapse:collapse;
+  margin-bottom:24px;
+}
+
+table.sol-table > tbody > tr > td {
+  border: solid 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+table.sol-table > thead > tr > td {
+  font-weight:bold;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+} */
+
+/*table.sol-table table {
+  border: 0;
+}*/
+
+div.codecaption {
+  float: center;
+  text-align: left;
+  font-style: italic;
+  font-size: 11px;
+  text-indent: 0;
+  margin: 0.5em 0.5em 0.5em 0;
+  padding: 0.5em 0.5em 0.5em 0;
+}
+
+sup.req {
+  color:steelblue;
+  margin-left:-2em
+}
+
+
+
+
+
+table.sol-state__definition tbody {
+  vertical-align: bottom;
+}
+
+.sol-state__definition-name {
+  font-size: 13px; 
+  background: darkslategrey;
+  padding: 4px 20px 4px 20px;
+  color: white;
+  border: none;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.sol-state__is {
+  font-size: 10px;
+  color:steelblue;
+  border: none;
+  margin: 0;
+  padding-left:10px;
+  vertical-align: middle;
+}
+
+table.sol-state__states {
+  margin: 0;
+  border-left: 5px solid darkslategrey;
+  padding-left: 10px;
+  border-spacing: 0 0;
+}
+
+.sol-state__title-state {
+  border: none;
+  font-size: 6pt;
+  font-style: italic;
+  padding-top:2px;
+  padding-bottom:4px;
+}
+
+.sol-state__title-encoded {
+  border: none;
+  font-size: 6pt;
+  font-style: italic;
+  text-align: right;
+}
+
+.sol-state__name {
+  border-bottom: solid gainsboro 1.0pt;
+  border-right: none;
+  padding-right: 0;
+}
+
+.sol-state__encoding {
+  border-bottom: solid gainsboro 1.0pt;
+  border-right: none;
+  font-size: 7pt;
+  text-align: right;
+  padding-left:0;
+}
+
+.sol-template__section .sol-dc__is {
+  padding-right:6px;
+}
+
+.sol-dc__indent {
+  width:10px;
+  border-right: solid lightgrey 1.0pt;
+}
+
+.sol-dc__post-indent {
+  width:10px;
+}
+
+.sol-with-clause {
+  border-bottom: solid gainsboro 1.0pt;
+  border-right: none;
+}
+
+table.sol-datacell-list {
+  margin: 0;    
+  margin-top: 20px;
+  border-left: none;
+}
+
+table.sol-datacell-sublist {
+  margin: 0;    
+  border-left: none;
+  margin-bottom: 20px;
+}
+
+.sol-datacell__comment {
+  font-size: 8pt;
+  font-style: italic;
+  color: grey;
+  border-bottom: none;
+}
+
+.sol-datacell__comment--structural {
+  font-size: 8pt;
+  font-style: italic;
+  color: darkslategrey;
+  border-bottom: none;
+}
+
+.sol-datacell__comment--error {
+  font-size: 8pt;
+  font-style: italic;
+  color: red;
+  border-bottom: none;
+}
+
+.sol-datacell__comment--todo {
+  font-size: 8pt;
+  font-style: italic;
+  color: saddlebrown;
+  border-bottom: none;
+}
+
+.sol-operator {
+  color:dodgerblue;
+}
+
+.sol-keyword {
+  color: steelblue;
+}
+
+.sol-unit {
+  font-style:italic;
+  color:dimgrey;
+}
+
+td.sol-math {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+td.sol-end-of-math {
+  border-bottom: none;
+}
+
+math {
+  margin: 0;
+  margin-left: -3px;
+  padding: 0;
+  math-style: normal;
+  font-family:helvetica;
+}
+
+.math_left {
+  text-align: left;
+}
+
+.math_right {
+  text-align: right;
+}
+
+.sol-div-top {
+  padding-bottom: 2px;
+}
+
+.sol-div-bottom {
+  padding-top: 2px;
+}
+
+mrow {
+  margin: 0;
+  padding: 0;
+}
+
+mn {
+  color: green;
+}
+
+.sol_number {
+  color: green;
+}
+
+.sol-named {
+  color: darkgreen;
+}
+
+.sol-signal {
+  color: saddlebrown;
+}
+
+.docend {
+    padding-top:50px;
+}
+
+</style>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [["$", "$"]]
+  },
+};
+</script>
+</style>
+</head>
+<body>
+
+<section id="_0">
+<h1>PTAHDAO</h1>
+<figure id="_2">
+<img src="/imgs/banner_1.png" alt="avatar">
+</figure>
+<p id="_4">
+PtahDAO, As the world's first DAO governance asset trust program, Incubated by LMR Partners-web3.0 Technology Lab, Is a groundbreaking combination of blockchain technology and financial investment, Which deeply implements the logic and rules of DAO governance, Realizing the concept of inclusive financial services and driving financial innovation.
+</p>
+</section>
+<div class="sol-doc-end"></div>
+
+  <script type="text/javascript">
+function andOrOperation(andor_div) {
+    let div_pos = andor_div.getBoundingClientRect();
+    let andor_table = andor_div.querySelector(':scope > table');
+    let andor_table_pos = andor_table.getBoundingClientRect();
+    let div_height = Math.ceil(andor_table_pos.height);
+    andor_div.setAttribute('style', 'height:' + div_height + 'px;');
+    let andor_svg = andor_div.querySelector(':scope > svg');
+    andor_svg.style.top = -andor_table_pos.height;
+    andor_svg.setAttribute('height', div_height);
+    andor_svg.setAttribute('width', div_pos.width);
+
+    let andor_operator = andor_div.querySelector(':scope > table > tbody > tr > td > span.sol-andor-operator');
+    let andor_pos = andor_operator.getBoundingClientRect();
+    let andor_end = andor_div.querySelector(':scope > table > tbody > tr > td.sol-andor-end');
+    let andor_end_pos = andor_end.getBoundingClientRect();
+    let end_bullet = andor_end.querySelector('div.sol-andor-end');
+    let end_bullet_pos = end_bullet.getBoundingClientRect();
+    let condition_parent = andor_div.querySelector(':scope > table > tbody > tr > td > table > tbody');
+    let condition_boxes = condition_parent.querySelectorAll(':scope > tr > td.sol-andor-condition > table, :scope > tr > td.sol-andor-condition > div');
+
+    let left_x = andor_pos.x - div_pos.x;
+    let right_x = left_x + andor_pos.width;
+    let top_y = andor_pos.y - div_pos.y;
+    let middle_y = top_y + andor_pos.height/2;
+
+    let end_bullet_x = end_bullet_pos.x + end_bullet_pos.width/2 - div_pos.x
+    let end_bullet_y = end_bullet_pos.y + end_bullet_pos.height/2 - div_pos.y
+
+    var count = condition_boxes.length;
+    for(var i = 0; i < count; i++) {
+        var condition = condition_boxes[i];
+        let condition_pos = condition.getBoundingClientRect();
+        let x2 = condition_pos.x-div_pos.x-15;
+        let y2 = condition_pos.y+condition_pos.height/2-div_pos.y;
+
+        var connect_line = document.createElementNS('http://www.w3.org/2000/svg','line');
+        connect_line.setAttribute('x1', right_x);
+        connect_line.setAttribute('y1', middle_y);
+        connect_line.setAttribute('x2', x2);
+        connect_line.setAttribute('y2', y2);
+        connect_line.setAttribute('stroke','black');
+        connect_line.setAttribute('stroke-width','1');
+        andor_svg.append(connect_line);
+
+        var dash_line = document.createElementNS('http://www.w3.org/2000/svg','line');
+        dash_line.setAttribute('x1', x2);
+        dash_line.setAttribute('y1', y2);
+        dash_line.setAttribute('x2', x2+8);
+        dash_line.setAttribute('y2', y2);
+        dash_line.setAttribute('stroke','black');
+        dash_line.setAttribute('stroke-width','1');
+        andor_svg.append(dash_line);
+
+        if (condition.nodeName == "DIV") {
+            console.log(condition);
+            let end_point = condition.querySelector(':scope > table > tbody > tr > td.sol-andor-end > div');
+            let end_point_pos = end_point.getBoundingClientRect();
+            var after_line_x1 = end_point_pos.x + end_point_pos.width - div_pos.x;
+        } else {
+            var after_line_x1 = condition_pos.x + condition_pos.width + 5 - div_pos.x;
+        };
+        let after_line_x2 = andor_end_pos.x - div_pos.x + 5;
+        var after_line = document.createElementNS('http://www.w3.org/2000/svg','line');
+        after_line.setAttribute('x1', after_line_x1);
+        after_line.setAttribute('y1', y2);
+        after_line.setAttribute('x2', after_line_x2);
+        after_line.setAttribute('y2', y2);
+        after_line.setAttribute('stroke','black');
+        after_line.setAttribute('stroke-width','1');
+        andor_svg.append(after_line);
+
+        var end_line = document.createElementNS('http://www.w3.org/2000/svg','line');
+        end_line.setAttribute('x1', after_line_x2);
+        end_line.setAttribute('y1', y2);
+        end_line.setAttribute('x2', end_bullet_x);
+        end_line.setAttribute('y2', end_bullet_y);
+        end_line.setAttribute('stroke','black');
+        end_line.setAttribute('stroke-width','1');
+        andor_svg.append(end_line);
+    }
+}
+
+function ifOperation(if_div) {
+    let if_div_pos = if_div.getBoundingClientRect();
+    let if_table = if_div.querySelector(':scope > table');
+    let if_table_pos = if_table.getBoundingClientRect();
+    let if_svg = if_div.querySelector(':scope > svg');
+    let div_height = Math.ceil(if_table_pos.height);
+    if_div.setAttribute('style', 'height:' + div_height + 'px;');
+    if_svg.style.top = -if_table_pos.height;
+    if_svg.setAttribute('height', div_height + 4);
+    if_svg.setAttribute('width', if_table_pos.width);
+
+    let if_operator = if_div.querySelector(':scope > table > tbody > tr > td > span.sol-if-operator');
+    let if_pos = if_operator.getBoundingClientRect();
+
+    let left_x = if_pos.x - if_div_pos.x;
+    let middle_x = left_x + if_pos.width/2;
+    let right_x = left_x + if_pos.width;
+    let top_y = Math.max(if_pos.y - if_div_pos.y, 0);
+    let middle_y = top_y + if_pos.height/2;
+    let bottom_y = top_y + if_pos.height;
+
+    let if_polygon = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+    if_polygon.setAttribute("points", left_x   + "," + middle_y + " " +
+                                      middle_x + "," + top_y    + " " +
+                                      right_x  + "," + middle_y + " " +
+                                      middle_x + "," + bottom_y);
+    if_polygon.setAttribute("style", "fill:none;stroke-width:1;stroke:black");
+    if_svg.append(if_polygon);
+
+    var condition_boxes = if_div.querySelectorAll(':scope > table > tbody > tr > td > table > tbody > tr > td.sol-if-condition');
+    let then_boxes      = if_div.querySelectorAll(':scope > table > tbody > tr > td > table > tbody > tr > td.sol-then-clause');
+    var count = condition_boxes.length;
+    for(var i = 0; i < count; i++) {
+        var condition_parent = condition_boxes[i];
+        var condition = condition_parent.querySelector(':scope > table, :scope > div')
+        var then_box = then_boxes[i];
+        let condition_pos = condition.getBoundingClientRect();
+        let then_pos = then_box.getBoundingClientRect();
+        let x2 = condition_pos.x-if_div_pos.x-15;
+        let y2 = condition_pos.y+condition_pos.height/2-if_div_pos.y;
+
+        var connect_line = document.createElementNS('http://www.w3.org/2000/svg','line');
+        connect_line.setAttribute('x1', right_x);
+        connect_line.setAttribute('y1', middle_y);
+        connect_line.setAttribute('x2', x2);
+        connect_line.setAttribute('y2', y2);
+        connect_line.setAttribute('stroke','black');
+        connect_line.setAttribute('stroke-width','1');
+        if_svg.append(connect_line);
+
+        var dash_line = document.createElementNS('http://www.w3.org/2000/svg','line');
+        dash_line.setAttribute('x1', x2);
+        dash_line.setAttribute('y1', y2);
+        dash_line.setAttribute('x2', x2+8);
+        dash_line.setAttribute('y2', y2);
+        dash_line.setAttribute('stroke','black');
+        dash_line.setAttribute('stroke-width','1');
+        if_svg.append(dash_line);
+
+        let then_x1 = condition_pos.x-if_div_pos.x+condition_pos.width+5;
+        var then_line = document.createElementNS('http://www.w3.org/2000/svg','line');
+        then_line.setAttribute('x1', then_x1);
+        then_line.setAttribute('y1', y2);
+        then_line.setAttribute('x2', then_pos.x-if_div_pos.x-5);
+        then_line.setAttribute('y2', y2);
+        then_line.setAttribute('stroke','black');
+        then_line.setAttribute('stroke-width','1');
+        if_svg.append(then_line);
+
+        var arrow_line_1 = document.createElementNS('http://www.w3.org/2000/svg','line');
+        arrow_line_1.setAttribute('x1', then_x1);
+        arrow_line_1.setAttribute('y1', y2);
+        arrow_line_1.setAttribute('x2', then_x1+5);
+        arrow_line_1.setAttribute('y2', y2-3);
+        arrow_line_1.setAttribute('stroke','black');
+        arrow_line_1.setAttribute('stroke-width','1');
+        if_svg.append(arrow_line_1);
+
+        var arrow_line_2 = document.createElementNS('http://www.w3.org/2000/svg','line');
+        arrow_line_2.setAttribute('x1', then_x1);
+        arrow_line_2.setAttribute('y1', y2);
+        arrow_line_2.setAttribute('x2', then_x1+5);
+        arrow_line_2.setAttribute('y2', y2+3);
+        arrow_line_2.setAttribute('stroke','black');
+        arrow_line_2.setAttribute('stroke-width','1');
+        if_svg.append(arrow_line_2);
+    }
+}
+
+let andor_if_operations = document.querySelectorAll('#sol-andor-operation, #sol-if-div');
+var count = andor_if_operations.length;
+for(var i = count - 1; i >= 0; i--) {
+    andor_if_op = andor_if_operations[i];
+    if (andor_if_op.id == 'sol-andor-operation') {
+        andOrOperation(andor_if_op);
+    }
+    else {
+        ifOperation(andor_if_op);
+    }
+}
+
+/*let if_operations = document.querySelectorAll('#sol-if-div');
+var count = if_operations.length;
+for(var i = 0; i < count; i++) {
+    ifOperation(if_operations[i]);
+}*/
+
+function setOperandBorderColor(op_element, color, parentClass) {
+    left_op = op_element.previousElementSibling;
+    if (left_op != null) {
+       left_expr = left_op.querySelector(':scope > table.sol-sub-expr');
+       if (left_expr != null) {
+          left_expr.style.borderColor = color;
+       }
+    }
+    right_op = op_element.nextElementSibling;
+    if (right_op != null) {
+       right_expr = right_op.querySelector(':scope > table.sol-sub-expr');
+       if (right_expr != null) {
+          right_expr.style.borderColor = color;
+       }
+    }
+    
+    let parent_table = op_element.parentNode.parentNode.parentNode;
+    if (parent_table.className.startsWith('sol-sub-expr')) {
+       parent_table.setAttribute('class', parentClass);
+    }
+}
+
+let operator_list = document.querySelectorAll('.sol-operator');
+var count = operator_list.length;
+for (var i = 0; i < count; i++) {
+    let operator = operator_list[i];
+    operator.onmouseover = function(event) {
+        setOperandBorderColor(event.target, 'black', 'sol-sub-expr hovering');
+    }
+    operator.onmouseout = function(event) {
+        setOperandBorderColor(event.target, '', 'sol-sub-expr');
+    }
+}
+
+</script>
+
+</body>
+</html>
